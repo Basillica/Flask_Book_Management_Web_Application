@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Search Results</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Results</h1>
+    {% if books|length < 1 %}
+        <h4 style="text-align: center">Please find results below!</h4>
+    {% else %}
+    <style type="text/css">
+        .tg  {border-collapse:collapse;border-spacing:10px;}
+        .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+        .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+        .tg .tg-0lax{text-align:left;vertical-align:top}
+    </style>
+    <table border="1" class="tg">
+        <tr>
+            <!-- <th class="tg-0lax"> Item </th> -->
+            <th class="tg-0lax"> Book Name </th>
+            <th class="tg-0lax"> Book Author </th>
+            <th class="tg-0lax"> Book ISBN</th>
+            <th class="tg-0lax"> Actions</th>
+        </tr>
+        {% for book in books %}
+            <tr>
+                <td>{{ book.name }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.isbn }}</td>
+                <td>
+                    <a href="/delete/{{book.id}}">Delete</a>
+                    <br>
+                    <a href="/update/{{book.id}}">Update</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+
+    <p><a href="/dashboard" class="button"> Return To Home </a></p>
+    <p><a href="/search" class="button"> Search Book Again </a></p>
+
+</div>
+{% endblock %}

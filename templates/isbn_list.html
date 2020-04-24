@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Update</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Input ISBN-LIST (comma seperated)</h1>
+
+    <div class="form">
+        <form action="/isbn_list" method="POST"></p>
+            <h3 style="text-align: center">Enter ISBN of books below! </h3>
+            <label for="isbn1">ISBN1:</label>
+            <p><input type="text" name="isbn1" id='isbn1' value =''/></p>
+            <label for="isbn2">ISBN2:</label>
+            <p><input type="text" name="isbn2" id='isbn2' value =''/></p>
+            <label for="isbn3">ISBN3:</label>
+            <p><input type="text" name="isbn3" id='isbn3' value =''/></p>
+            <label for="isbn4">ISBN4:</label>
+            <p><input type="text" name="isbn4" id='isbn4' value =''/></p>
+            <input type="submit" value="Search and Email ISBN-LIST!">
+        </form>
+    </div>
+    <li><a href="/dashboard" class="button"> Return to Home </a></li>
+</div>
+{% endblock %}

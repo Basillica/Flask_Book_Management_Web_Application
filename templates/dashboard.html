@@ -1,0 +1,84 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+{% endblock %}
+
+{% block content %}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Book Management System</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><a href="/add_book" class="button"> Add a Book </a></li>
+            <li><a href="/search" class="button"> Search Books </a></li>
+            <li><a href="/all_isbn" class="button"> Mail All ISBN </a></li>
+            <li><a href="/isbn_list" class="button"> Mail select ISBN </a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Welcome, {{ name }}</h1>
+          <div class="table-responsive">
+
+            {% if books|length < 1 %}
+                <h4 style="text-align: center">You do not have any books yet. Create one now!!</h4>
+            {% else %}
+            <h4 style="text-align: center">My favorite books are listed below!</h4>
+            <table border="1" class="tg">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                    <!-- <th class="tg-0lax"> Item </th> -->
+                    <th class="tg-0lax"> Book Name </th>
+                    <th class="tg-0lax"> Book Author </th>
+                    <th class="tg-0lax"> Book ISBN</th>
+                    <th class="tg-0lax"> Modify or Delete Entries</th>
+                </tr>
+              </thead>
+                {% for book in books %}
+                  <tbody>
+                    <tr>
+                        <td>{{ book.name }}</td>
+                        <td>{{ book.author }}</td>
+                        <td>{{ book.isbn }}</td>
+                        <td>
+                            <a href="/delete/{{book.id}}">Delete</a>
+                            <br>
+                            <a href="/update/{{book.id}}">Update</a>
+                        </td>
+                    </tr>
+                  </tbody>
+                {% endfor %}
+            </table>
+            {% endif %}
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

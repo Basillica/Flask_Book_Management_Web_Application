@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Search Books </title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Search a Book</h1>
+    <h4 style="text-align: center">Using EITHER name OR author OR isbn</h4>
+    <div class="form">
+        <form action="/search" method="POST">
+            <label for="name">Name:</label>
+            <p><input type = "text" id ='name' name = "name" /></p>
+            <label for="author">Author:</label>
+            <p><input type = "text" id ='author' name = "author" /></p>
+            <label for="isbn">ISBN:</label>
+            <p><input type = "text" id ='isbn' name = "isbn" /></p>
+            <input type="submit" value="Search Book!">
+        </form>
+    </div>
+</div>
+{% endblock %}

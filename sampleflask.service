@@ -1,0 +1,15 @@
+ini
+#Metadata and dependencies section
+[Unit]
+Description=sampleflask service
+After=network.target
+#Define users and app working directory
+[Service]
+User=tony
+Group=www-data
+WorkingDirectory=/home/tony/project
+Environment="PATH=/home/tony/project/env/bin"
+ExecStart=/home/tony/project/env/bin/uwsgi --ini sampleflask.ini
+#Link the service to start on multi-user system up
+[Install]
+WantedBy=multi-user.target
