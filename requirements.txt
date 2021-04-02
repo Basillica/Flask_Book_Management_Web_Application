@@ -17,7 +17,7 @@ Flask-WTF==0.14.3
 idna==2.9
 imagesize==1.2.0
 itsdangerous==1.1.0
-Jinja2==2.11.2
+Jinja2==2.11.3
 MarkupSafe==1.1.1
 marshmallow==2.18.0
 marshmallow-jsonapi==0.23.1
